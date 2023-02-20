@@ -56,6 +56,11 @@
         //SCENE 1
         let scene1 = new PIXI.Container();
 
+        let scene1BG = PIXI.Sprite.from('img/bg-two.png');
+        scene1BG.width = app.view.width;
+        scene1BG.height = app.view.height;
+        scene1.addChild(scene1BG);
+
         //Using our button object let's create a "next" button.
         let nextButton1 = UI.Button(0, 0, "Next >");
 
@@ -72,18 +77,26 @@
         //And place it into the scene
         scene1.addChild(scene1Text);
 
+
+
         //Picture
         //import { Sprite } from 'pixi.js';
         //let scene1Img = Sprite.from('img/lepomis-gibbosus.png');
         /*
             So we can't use import commands in the body of an HTML file -- only in a Module. However since we've already imported the Pixi library back on line 18 it's set to go. That put all of Pixi's stuff into the PIXI object, so we instead need to do it this way:
-        */
-        let scene1Img = PIXI.Sprite.from('img/lepomis-gibbosus.png');
+        
+        let scene1Img = PIXI.Sprite.from('img/fish-1.png');
 
         scene1.addChild(scene1Img); //fixed misspelling here
+        */
 
         //SCENE 2
         let scene2 = new PIXI.Container();
+
+        let scene2BG = PIXI.Sprite.from('img/bg-two.png');
+        scene2BG.width = app.view.width;
+        scene2BG.height = app.view.height;
+        scene2.addChild(scene2BG);
 
         //Back button
         let backButton2 = UI.Button(0, 0, "< Back");
@@ -107,9 +120,17 @@
         //And place it into the scene
         scene2.addChild(scene2Text);
 
+        //fish
+        let scene2Img = PIXI.Sprite.from('img/fish-1.png');
+        scene2.addChild(scene2Img);
 
         //SCENE 3
         let scene3 = new PIXI.Container();
+
+        let scene3BG = PIXI.Sprite.from('img/bg-two.png');
+        scene3BG.width = app.view.width;
+        scene3BG.height = app.view.height;
+        scene3.addChild(scene3BG);
 
         //Back button
         let backButton3 = UI.Button(0, 0, "< Back");
@@ -133,8 +154,17 @@
         //And place it into the scene
         scene3.addChild(scene3Text);
 
+        //fish
+        let scene3Img = PIXI.Sprite.from('img/fish-2.png');
+        scene3.addChild(scene3Img);
+
         //SCENE 4
         let scene4 = new PIXI.Container();
+
+        let scene4BG = PIXI.Sprite.from('img/bg-two.png');
+        scene4BG.width = app.view.width;
+        scene4BG.height = app.view.height;
+        scene4.addChild(scene4BG);
 
         //Back button
         let backButton4 = UI.Button(0, 0, "< Back");
@@ -150,7 +180,9 @@
         //And place it into the scene
         scene4.addChild(scene4Text);
 
-
+        //fish
+        let scene4Img = PIXI.Sprite.from('img/fish-3.png');
+        scene4.addChild(scene4Img);
 
         //Now let's add the first scene to the stage
         app.stage.addChild(scene1);
