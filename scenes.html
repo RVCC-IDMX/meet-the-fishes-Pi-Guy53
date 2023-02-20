@@ -73,10 +73,14 @@
         scene1.addChild(scene1Text);
 
         //Picture
-        import { Sprite } from 'pixi.js';
-        let scene1Img = Sprite.from('img/lepomis-gibbosus.png');
+        //import { Sprite } from 'pixi.js';
+        //let scene1Img = Sprite.from('img/lepomis-gibbosus.png');
+        /*
+            So we can't use import commands in the body of an HTML file -- only in a Module. However since we've already imported the Pixi library back on line 18 it's set to go. That put all of Pixi's stuff into the PIXI object, so we instead need to do it this way:
+        */
+        let scene1Img = PIXI.Sprite.from('img/lepomis-gibbosus.png');
 
-        scene1.addChild(sceen1Img);
+        scene1.addChild(scene1Img); //fixed misspelling here
 
         //SCENE 2
         let scene2 = new PIXI.Container();
