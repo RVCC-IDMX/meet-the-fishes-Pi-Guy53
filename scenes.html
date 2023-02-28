@@ -90,6 +90,7 @@
         scene1.addChild(scene1Img); //fixed misspelling here
         */
 
+
         //SCENE 2
         let scene2 = new PIXI.Container();
 
@@ -465,37 +466,88 @@
         Director.addScene("third", scene3);
 
         let params = {};
+        let pageIndex = 1;
 
         nextButton1.onclick = () => {
             params.direction = "left"
             Director.swipe(scene1, scene2, params);
+
+            pageIndex = 2;
+            loopAnim();
         }
 
         nextButton2.onclick = () => {
             params.direction = "left"
             Director.swipe(scene2, scene3, params);
+
+            pageIndex = 3;
+            loopAnim();
         }
 
         nextButton3.onclick = () => {
             params.direction = "left"
             Director.swipe(scene3, scene4, params);
+
+            pageIndex = 4;
+            loopAnim();
         }
 
         backButton2.onclick = () => {
             params.direction = "right"
             Director.swipe(scene2, scene1, params);
+
+            pageIndex = 1;
+            loopAnim();
         }
 
         backButton3.onclick = () => {
             params.direction = "right"
             Director.swipe(scene3, scene2, params);
+
+            pageIndex = 2;
+            loopAnim();
         }
 
         backButton4.onclick = () => {
             params.direction = "right"
             Director.swipe(scene4, scene3, params);
+
+            pageIndex = 3;
+            loopAnim();
         }
 
+        //Animations
+        async function loopAnim() {
+
+            if (pageIndex === 2) {
+                await Animate.to(scene2Img, { x: 450, y: 250, duration: 1000 });
+                await Animate.to(scene2Img, { x: 100, y: 340, duration: 1000 });
+                await Animate.to(scene2Img, { x: 0, y: 0, duration: 1000 });
+                loopAnim();
+            }
+            else if (pageIndex === 3) {
+                await Animate.to(scene3Img, { x: 0, y: 250, duration: 1000 });
+                await Animate.to(scene3Img, { x: 450, y: 0, duration: 1500 });
+                await Animate.to(scene3Img, { x: 250, y: 250, duration: 1000 });
+                await Animate.to(scene3Img, { x: 0, y: 0, duration: 1000 });
+                loopAnim();
+            }
+            else if (pageIndex === 4) {
+                let rx = Math.random() * (450 - 0) + 0;
+                let ry = Math.random() * (300 - 0) + 0;
+                let dr = getDist(scene4Img.x, scene4Img.y, rx, ry) * 5;
+
+                await Animate.to(scene4Img, { x: rx, y: ry, duration: dr });
+                loopAnim();
+            }
+        }
+
+        function getDist(x1, y1, x2, y2) {
+            let a = Math.abs(x1 - x2);
+            let b = Math.abs(y1 - y2);
+
+            return Math.sqrt((a * a) + (b * b));
+        }
 
         /*
             This week's homework!
